@@ -4,14 +4,16 @@
     "next/typescript",
     "plugin:import/typescript",
     "plugin:import/recommended",
+    "plugin:css-import-order/recommended",
     "prettier"
   ],
+  "plugins": ["css-import-order"],
   "rules": {
     "import/no-unresolved": "off",
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", "sibling"],
+        "groups": ["builtin", "external", "internal", "sibling", "index", "type"],
         "pathGroups": [
           {
             "pattern": "{next,next/**/*}",
