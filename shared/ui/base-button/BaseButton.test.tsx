@@ -1,7 +1,5 @@
-import { beforeEach } from "node:test";
-
 import userEvent from "@testing-library/user-event";
-import { expect, describe, test, vi } from "vitest";
+import { beforeEach, expect, describe, test, vi } from "vitest";
 
 import { render, screen } from "@/shared/lib/test";
 
