@@ -5,6 +5,7 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./widgets/**/*.{js,ts,jsx,tsx,mdx}",
     "./features/**/*.{js,ts,jsx,tsx,mdx}",
+    "./entities/**/*.{js,ts,jsx,tsx,mdx}",
     "./shared/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -26,6 +27,7 @@ export default {
         point_red: {
           300: "#e9d4d6",
           400: "#913F42",
+          450: "#8B2A2F",
           500: "#62000e",
           600: "#4a000b",
         },
@@ -45,6 +47,7 @@ export default {
         background: {
           light: "#f9f9f9",
           default: "#f2f0eb",
+          light_dark: "#242424",
           dark: "#1d1d1d",
         },
       },
