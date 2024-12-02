@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => unknown;
 }
 
-export const Button = ({ children, onClick, disabled, ...props }: ButtonProps) => {
+export const BaseButton = ({ children, onClick, disabled, ...props }: ButtonProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
