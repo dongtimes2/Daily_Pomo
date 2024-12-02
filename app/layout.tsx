@@ -10,6 +10,11 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
+const mono = localFont({
+  src: "./fonts/NotoSansMono.ttf",
+  variable: "--font-mono",
+});
+
 export const metadata: Metadata = {
   title: "Daily Pomo",
   description: "This is web pomodoro timer application.",
