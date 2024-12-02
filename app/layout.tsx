@@ -17,7 +17,7 @@ const mono = localFont({
 
 export const metadata: Metadata = {
   title: "Daily Pomo",
-  description: "This is web pomodoro timer application.",
+  description: "This is a web-based Pomodoro timer application.",
 };
 
 export default function RootLayout({
