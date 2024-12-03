@@ -12,7 +12,7 @@ export const Header = () => {
         <Link href="/">
           <span className="flex gap-2">
             <h1 className="text-xl font-bold">Daily Pomo</h1>
-            <Flame />
+            <Flame color="#fd2b78" />
           </span>
         </Link>
         <span className="flex items-center gap-4">
