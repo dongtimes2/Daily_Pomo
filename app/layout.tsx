@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import { Drawer } from "@/shared/lib/drawer";
+import { Header } from "@/widgets";
+
 import { Providers } from "./providers";
 
 import "./globals.css";
@@ -27,8 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${pretendard.variable} font-pretendard`}>
-        <Providers>{children}</Providers>
+      <body className={`${pretendard.variable} ${mono.variable} font-pretendard flex flex-col`}>
+        <Providers>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Drawer />
+        </Providers>
       </body>
     </html>
   );
