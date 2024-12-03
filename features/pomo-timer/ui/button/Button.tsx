@@ -2,6 +2,7 @@ import { ButtonHTMLAttributes, useState } from "react";
 
 import { BaseButton } from "@/shared/ui/base-button";
 
+import pressSound from "../../../../public/press_sound.mp3";
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isPressed?: boolean;
 }
@@ -20,7 +21,10 @@ export const Button = ({ children, isPressed = false, ...props }: IButtonProps) 
         }
       `}
       type="button"
-      onMouseDown={() => setIsClicked(true)}
+      onMouseDown={() => {
+        new Audio(pressSound).play();
+        setIsClicked(true);
+      }}
       onMouseUp={() => setIsClicked(false)}
       {...props}
     >
