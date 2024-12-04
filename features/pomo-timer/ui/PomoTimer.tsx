@@ -7,6 +7,7 @@ import { getFcmToken } from "@/shared/lib/worker/firebase";
 
 import { Button } from "./button/Button";
 
+import chime from "../../../public/chime.mp3";
 import { postSendMessage } from "../api/api";
 import { formatTime, getModeTitle, getNextMode } from "../lib/utils";
 import { useModeStore } from "../model/store";
@@ -75,6 +76,7 @@ export const PomoTimer = () => {
         case "COMPLETE":
           setIsActive(false);
           let token: string | undefined;
+          new Audio(chime).play();
 
           try {
             token = await getFcmToken();
