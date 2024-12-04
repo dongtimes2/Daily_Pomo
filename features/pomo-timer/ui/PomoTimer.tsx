@@ -121,17 +121,17 @@ export const PomoTimer = () => {
         {formatTime(time)}
       </div>
       <div className="flex justify-center gap-4">
-        <Button onClick={handleActiveToggle} isPressed={isActive}>
+        <Button onClick={handleActiveToggle} isPressed={isActive} aria-label="play or pause">
           {isActive ? (
             <Pause className="w-5 h-5 text-point_gray-500 dark:text-white" />
           ) : (
             <Play className="w-5 h-5 text-point_gray-500 dark:text-white" />
           )}
         </Button>
-        <Button onClick={handleReset}>
+        <Button onClick={handleReset} aria-label="reset">
           <RotateCcw className="w-5 h-5 text-point_gray-500 dark:text-white" />
         </Button>
-        <Button onClick={handleModeToggle}>
+        <Button onClick={handleModeToggle} aria-label="change mode">
           {mode === "WORK" ? (
             <Coffee className="w-5 h-5 text-point_gray-500 dark:text-white" />
           ) : mode === "BREAK" ? (

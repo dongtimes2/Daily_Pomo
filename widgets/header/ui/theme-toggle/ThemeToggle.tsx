@@ -17,7 +17,11 @@ export const ThemeToggle = () => {
   if (!isMounted) return null;
 
   return (
-    <Button data-testid="theme-toggle" onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}>
+    <Button
+      data-testid="theme-toggle"
+      aria-label="theme toggle"
+      onClick={() => (theme === "light" ? setTheme("dark") : setTheme("light"))}
+    >
       {theme === "light" ? <Sun /> : <Moon />}
     </Button>
   );
