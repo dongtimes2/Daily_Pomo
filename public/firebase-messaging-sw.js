@@ -23,8 +23,6 @@ if (isSupported) {
       notification: { title },
     } = payload;
 
-    self.registration.showNotification(title, {
-      icon: "icon-192x192.png",
-    });
+    self.registration.showNotification(title);
   });
 }
