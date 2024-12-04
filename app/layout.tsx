@@ -5,7 +5,6 @@ import { Drawer } from "@/shared/lib/drawer";
 import { Header } from "@/widgets";
 
 import { Providers } from "./providers";
-import { ServiceWorkerRegistration } from "./worker/ServiceWorkerRegistration";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.min.css";
@@ -38,7 +37,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Drawer />
         </Providers>
-        <ServiceWorkerRegistration />
       </body>
     </html>
   );
