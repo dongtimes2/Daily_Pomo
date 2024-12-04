@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw, Coffee, Flame, BatteryCharging } from "lucide-react";
 
 import { useSettingsStore } from "@/entities";
+import { getFcmToken } from "@/shared/lib/worker/firebase";
 
 import { Button } from "./button/Button";
 
+import { postSendMessage } from "../api/api";
 import { formatTime, getModeTitle, getNextMode } from "../lib/utils";
 import { useModeStore } from "../model/store";
 import { IWorkerMessage } from "../model/types";
@@ -60,7 +62,7 @@ export const PomoTimer = () => {
   useEffect(() => {
     if (!workerRef.current) return;
 
-    workerRef.current.onmessage = (e: MessageEvent<IWorkerMessage>) => {
+    workerRef.current.onmessage = async (e: MessageEvent<IWorkerMessage>) => {
       const { type, timeLeft } = e.data;
 
       switch (type) {
@@ -69,22 +71,37 @@ export const PomoTimer = () => {
             setTime(timeLeft);
           }
           break;
+
         case "COMPLETE":
           setIsActive(false);
+          let token: string | undefined;
 
-          if (mode === "WORK") {
-            pomoCounter.current += 1;
+          try {
+            token = await getFcmToken();
+          } catch (err) {
+            console.error(err);
+          }
 
-            if (pomoCounter.current % longBreakInterval === 0) {
-              setMode("LONG_BREAK");
-              setTime(getTime("LONG_BREAK"));
+          try {
+            if (mode === "WORK") {
+              pomoCounter.current += 1;
+
+              if (pomoCounter.current % longBreakInterval === 0) {
+                setMode("LONG_BREAK");
+                setTime(getTime("LONG_BREAK"));
+                if (token) await postSendMessage({ mode: "LONG_BREAK", token });
+              } else {
+                setMode("BREAK");
+                setTime(getTime("BREAK"));
+                if (token) await postSendMessage({ mode: "BREAK", token });
+              }
             } else {
-              setMode("BREAK");
-              setTime(getTime("BREAK"));
+              setMode("WORK");
+              setTime(getTime("WORK"));
+              if (token) await postSendMessage({ mode: "WORK", token });
             }
-          } else {
-            setMode("WORK");
-            setTime(getTime("WORK"));
+          } catch (err) {
+            console.error(err);
           }
           break;
       }

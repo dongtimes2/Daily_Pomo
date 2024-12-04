@@ -1,11 +1,15 @@
 import { PropsWithChildren } from "react";
 
-import { ThemeProvider } from "next-themes";
+import { NotiProvider } from "./NotiProvider";
+import { ThemeProvider } from "./ThemeProvider";
+import { ToastProvider } from "./ToastProvider";
 
 export const Providers = ({ children }: PropsWithChildren) => {
   return (
-    <>
-      <ThemeProvider attribute="class">{children}</ThemeProvider>
-    </>
+    <ThemeProvider>
+      <NotiProvider>
+        <ToastProvider>{children}</ToastProvider>
+      </NotiProvider>
+    </ThemeProvider>
   );
 };

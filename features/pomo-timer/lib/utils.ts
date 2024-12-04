@@ -27,3 +27,14 @@ export const getModeTitle = (mode: TMode) => {
       return "Long Break Time";
   }
 };
+
+export const getMessage = (mode: TMode) => {
+  switch (mode) {
+    case "WORK":
+      return "Time to focus and achieve!";
+    case "BREAK":
+      return "Quick refresh, you earned it!";
+    case "LONG_BREAK":
+      return "Recharge fully - you're doing great!";
+  }
+};
