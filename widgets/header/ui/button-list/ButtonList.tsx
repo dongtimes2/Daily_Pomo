@@ -1,5 +1,5 @@
 "use client";
-import { Settings2, ChartLine } from "lucide-react";
+import { Settings2 } from "lucide-react";
 
 import { SettingsDashboard } from "@/entities";
 import { useDrawerStore } from "@/shared/lib/drawer/store";
@@ -14,10 +14,6 @@ export const ButtonList = () => {
       <Button onClick={() => open(<SettingsDashboard />)}>
         <Settings2 />
         <p>Settings</p>
-      </Button>
-      <Button>
-        <ChartLine />
-        <p>Report</p>
       </Button>
     </>
   );
